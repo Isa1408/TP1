@@ -1,81 +1,83 @@
 public class Fraction {
-    private static int numerateur;
-    private static int denominateur;
+    private int numerateur;
+    private int denominateur;
 
     public Fraction(int numerateur, int denominateur) {
         this.numerateur = numerateur;
         this.denominateur = denominateur;
-//        simplifierFraction();
+        simplifier();
     }
 
-//    public static int trouverPGCD(int numerateur, int denominateur){
-//        int resultat = 0;
-//
-//        while (denominateur != 0){
-//            resultat = denominateur;
-//            denominateur = numerateur % denominateur;
-//            numerateur = resultat;
-//        }
-//        return resultat;
-//    }
-    public static int pgcd( int a, int b ){
-        int resultat = 0;
+    public static int trouverPGCD(int num, int denum){
+        int lePGCD = 0;
+        int mod;
 
-        if( 0 != a || 0 != b ){
-            a = Math.abs( a );
-            b = Math.abs( b );
+        if (num != 0 || denum != 0){
+            num = Math.abs(num);
+            denum = Math.abs(denum);
 
-            while( b != 0 ) {
-                int temp = a % b;
-
-                a = b;
-                b = temp;
+            while (denum != 0) {
+                mod = num % denum;
+                num = denum;
+                denum = mod;
             }
-
-            resultat = a;
+            lePGCD = num;
         }
-
-        return resultat;
+        return lePGCD;
     }
 
+    public void simplifier(){
+        int lePGCD = trouverPGCD(numerateur, denominateur);
+        numerateur = numerateur / lePGCD;
+        denominateur = denominateur / lePGCD;
 
-    // mm denom
-    public static void simplifierFraction(){
+    }
+    public Fraction additionnerFractions(Fraction autreFraction){
+        Fraction fractionsAdditionnees;
+        int numerateur = 0;
+        int denominateur = 0;
 
-        numerateur = numerateur ;
-//        denominateur = pgcd;
-//        System.out.println(pgcd);
+        numerateur = this.numerateur * autreFraction.getDenominateur() + autreFraction.getNumerateur() * this.denominateur;
+        denominateur = this.denominateur * autreFraction.getDenominateur();
+        fractionsAdditionnees = new Fraction(numerateur, denominateur);
+
+        return fractionsAdditionnees;
     }
 
-    public static Fraction additionnerFraction(Fraction laFraction){
-        int num;
-        int denom;
-        System.out.println(numerateur);
-        System.out.println(laFraction.getNumerateur());
-        int pgcd = pgcd(numerateur,denominateur);
-        Fraction fractionAdditionnee = null;
-        System.out.println(numerateur);
+    public Fraction soustraireFractions(Fraction autreFraction){
+        Fraction fractionsSoustraites;
+        int numerateur = 0;
+        int denominateur = 0;
 
+        numerateur = this.numerateur * autreFraction.getDenominateur() - autreFraction.getNumerateur() * this.denominateur;
+        denominateur = this.denominateur * autreFraction.getDenominateur();
+        fractionsSoustraites = new Fraction(numerateur, denominateur);
 
-       Fraction temp = new Fraction(laFraction.getNumerateur()*pgcd,laFraction.getDenominateur()*pgcd);
-        if (denominateur == temp.getDenominateur()) {
-//            System.out.println(numerateur);
-            fractionAdditionnee = new Fraction(numerateur + temp.getNumerateur(), denominateur);
-        }
+        return fractionsSoustraites;
+    }
 
-//        Fraction fractionAdditionee = null;
-//
-//        if (denominateur == laFraction.getDenominateur()){
-//            fractionAdditionee = new Fraction(numerateur + laFraction.getNumerateur(), denominateur);
-//        }else {
-//            simplifierFraction();
-////            num = numerateur * laFraction.getNumerateur();
-////            denom = denominateur * laFraction.getDenominateur();
-//
-//        }
-       // simplifierFraction();
+    public Fraction multiplierFractions(Fraction autreFraction){
+        Fraction fractionsMultipliees;
+        int numerateur = 0;
+        int denominateur = 0;
 
-        return fractionAdditionnee;
+        numerateur = this.numerateur * autreFraction.getNumerateur();
+        denominateur = this.denominateur * autreFraction.getDenominateur();
+        fractionsMultipliees = new Fraction(numerateur, denominateur);
+
+        return fractionsMultipliees;
+    }
+
+    public Fraction diviserFractions(Fraction autreFraction){
+        Fraction fractionsDivisees;
+        int numerateur = 0;
+        int denominateur = 0;
+
+        numerateur = this.numerateur * autreFraction.getDenominateur();
+        denominateur = this.denominateur * autreFraction.getNumerateur();
+        fractionsDivisees = new Fraction(numerateur, denominateur);
+
+        return fractionsDivisees;
     }
 
     public int getNumerateur() {
@@ -92,5 +94,11 @@ public class Fraction {
 
     public void setDenominateur(int denominateur) {
         this.denominateur = denominateur;
+    }
+
+    public String toString(){
+        String fractionRendue = this.numerateur + " / " + this.denominateur;
+
+        return fractionRendue;
     }
 }
