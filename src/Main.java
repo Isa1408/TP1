@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         //ManipulerFichiers.lireFichier();
@@ -5,23 +7,31 @@ public class Main {
         //ManipulerChar.charValides();
         Fraction fraction = new Fraction(-32, 68);
         Fraction fraction2 = new Fraction(69, -36);
-        //System.out.println(fraction2.additionnerFraction(fraction));
-//        Fraction fraction3 = fraction2.additionnerFraction(fraction);
-//        System.out.println(fraction3.getNumerateur());
-//        System.out.println(fraction3.getDenominateur());
 
 
-        Fraction fraction3 = fraction.diviserFractions(fraction2);
-        System.out.println(fraction3.toString());
-       // System.out.println(fraction3.getNumerateur() + "/" + fraction3.getDenominateur());
+//
+//        Fraction fraction3 = fraction.diviserFractions(fraction2);
+//        System.out.println(fraction3.toString());
+//       // System.out.println(fraction3.getNumerateur() + "/" + fraction3.getDenominateur());
 
 //        int test = Fraction.trouverPGCD(-4,-2);
 //        System.out.println(test);
 
+        Note note1 = new Note(4,2,fraction2);
+        Note note2 = new Note(8,5,fraction);
+
+        ArrayList<ArrayList<Object>> noteTest = note1.lesNotes();
+        ArrayList<ArrayList<Object>> noteTest2 = note2.lesNotes();
+
+        System.out.println(noteTest.get(0).set(1,note1));
+        //System.out.println(noteTest2);
 
 
+       // System.out.println();
 
-
+//        System.out.println();
+//        System.out.println(note1.lesNotes());
+//        System.out.println(note2.lesNotes());
 
 
     }
