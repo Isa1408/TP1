@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Objects;
 
 public class Note {
     private int numDeNote = 9;
@@ -11,24 +11,27 @@ public class Note {
         this.duree = duree;
     }
 
-    public ArrayList<ArrayList<Object>> lesNotes(){
-        ArrayList<ArrayList<Object>> toutesLesNotes = new ArrayList<ArrayList<Object>>();
-        ArrayList<Object> notes = new ArrayList<>();
-        toutesLesNotes.add(notes);
-        notes.add(numDeNote);
-        notes.add(numOctave);
-        notes.add(duree);
 
 
-        return toutesLesNotes;
-    }
+//    public ArrayList<ArrayList<Object>> lesNotes(){
+//        ArrayList<ArrayList<Object>> toutesLesNotes = new ArrayList<ArrayList<Object>>();
+//        ArrayList<Object> notes = new ArrayList<>();
+//        toutesLesNotes.add(notes);
+//        notes.add(numDeNote);
+//        notes.add(numOctave);
+//        notes.add(duree);
+//
+//
+//        return toutesLesNotes;
+//    }
 
     public int getNumDeNote() {
         return numDeNote;
     }
 
-    public void setNumDeNote(int numDeNote) {
+    public Object setNumDeNote(int numDeNote) {
         this.numDeNote = numDeNote;
+        return null;
     }
 
     public int getNumOctave() {
@@ -43,7 +46,13 @@ public class Note {
         return duree;
     }
 
-    public void setDuree(Fraction duree) {
+    public Objects setDuree(Fraction duree) {
         this.duree = duree;
+        return null;
+    }
+
+    public String toString(){
+        String noteRendue = this.numDeNote + "," + this.numOctave + "," + this.duree;
+        return noteRendue;
     }
 }

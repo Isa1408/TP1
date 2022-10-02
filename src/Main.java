@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,19 +21,27 @@ public class Main {
         Note note1 = new Note(4,2,fraction2);
         Note note2 = new Note(8,5,fraction);
 
-        ArrayList<ArrayList<Object>> noteTest = note1.lesNotes();
-        ArrayList<ArrayList<Object>> noteTest2 = note2.lesNotes();
+            //        ArrayList<ArrayList<Object>> noteTest = note1.lesNotes();
+            //        ArrayList<ArrayList<Object>> noteTest2 = note2.lesNotes();
+            //
+            //        System.out.println(noteTest.get(0).set(1,note1));
+            //        //System.out.println(noteTest2);
+            //
+            //
+            //       // System.out.println();
+            //
+            ////        System.out.println();
+            ////        System.out.println(note1.lesNotes());
+            ////        System.out.println(note2.lesNotes());
 
-        System.out.println(noteTest.get(0).set(1,note1));
-        //System.out.println(noteTest2);
 
-
-       // System.out.println();
-
+//        ManipulerChar.listeCharEtEffets(note1);
 //        System.out.println();
-//        System.out.println(note1.lesNotes());
-//        System.out.println(note2.lesNotes());
 
+        //ManipulerFichiers.lireFichier();
+        ArrayList liste = ManipulerFichiers.listeChar();
+        Note nouvelleNote = ManipulerChar.manipulerLaNote(note1, liste);
+        System.out.println(nouvelleNote.toString());
 
     }
 }
