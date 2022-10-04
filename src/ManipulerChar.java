@@ -1,9 +1,13 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class ManipulerChar {
     public static Note manipulerLaNote(Note noteTemp, ArrayList<String> donnees){
+        ArrayDeque<Note> notePile = new ArrayDeque<>();
+        ArrayList<Note> notesAJouer = new ArrayList<>();
+        Note derniereNotePile;
 
         for (String laDonnee : donnees){
             switch (laDonnee){
@@ -21,9 +25,14 @@ public class ManipulerChar {
                     break;
                 case "[":
                     //sauvegarde la note courante sur la pile
+                    notePile.add(new Note(noteTemp));
                     break;
                 case "]":
                     //remplace ls note courante par la note au sommet de la pile
+                    if (notePile != null){
+                        derniereNotePile = notePile.pollLast();
+                        noteTemp = derniereNotePile;
+                    }
                     break;
                 case "a":
                     noteTemp.setNumDeNote(9);
@@ -92,6 +101,7 @@ public class ManipulerChar {
                     break;
                 case "!":
                     //indique qu il faut jouer la note courante
+
                     break;
             }
         }

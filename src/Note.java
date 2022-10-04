@@ -3,10 +3,17 @@ public class Note {
     private int numOctave = 4;
     private Fraction duree = new Fraction(1,1);
 
+
     public Note(int numDeNote, int numOctave, Fraction duree) {
         this.numDeNote = numDeNote;
         this.numOctave = numOctave;
         this.duree = duree;
+    }
+
+    public Note(Note nouvelleNote){
+        this.numDeNote = nouvelleNote.numDeNote;
+        this.numOctave = nouvelleNote.numOctave;
+        this.duree = nouvelleNote.duree;
     }
 
     public int getNumDeNote() {
