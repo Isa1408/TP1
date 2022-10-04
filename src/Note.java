@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Note {
     private int numDeNote = 9;
     private int numOctave = 4;
@@ -11,27 +9,12 @@ public class Note {
         this.duree = duree;
     }
 
-
-
-//    public ArrayList<ArrayList<Object>> lesNotes(){
-//        ArrayList<ArrayList<Object>> toutesLesNotes = new ArrayList<ArrayList<Object>>();
-//        ArrayList<Object> notes = new ArrayList<>();
-//        toutesLesNotes.add(notes);
-//        notes.add(numDeNote);
-//        notes.add(numOctave);
-//        notes.add(duree);
-//
-//
-//        return toutesLesNotes;
-//    }
-
     public int getNumDeNote() {
         return numDeNote;
     }
 
-    public Object setNumDeNote(int numDeNote) {
+    public void setNumDeNote(int numDeNote) {
         this.numDeNote = numDeNote;
-        return null;
     }
 
     public int getNumOctave() {
@@ -46,9 +29,8 @@ public class Note {
         return duree;
     }
 
-    public Objects setDuree(Fraction duree) {
+    public void setDuree(Fraction duree) {
         this.duree = duree;
-        return null;
     }
 
     public String toString(){

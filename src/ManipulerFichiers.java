@@ -30,7 +30,7 @@ public class ManipulerFichiers {
         return fichier;
     }
 
-    public static ArrayList listeChar(){
+    public static ArrayList<String> listeChar(){
         Scanner fichier = lireFichier();
         String courant = "";
         fichier.useDelimiter("");

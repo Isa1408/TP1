@@ -7,7 +7,7 @@ public class Main {
         //Specs.nbrTemps();
         //ManipulerChar.charValides();
         Fraction fraction = new Fraction(-32, 68);
-        Fraction fraction2 = new Fraction(69, -36);
+        Fraction fraction2 = new Fraction(5, 4);
 
 
 //
@@ -18,7 +18,7 @@ public class Main {
 //        int test = Fraction.trouverPGCD(-4,-2);
 //        System.out.println(test);
 
-        Note note1 = new Note(4,2,fraction2);
+        Note note1 = new Note(11,9,fraction2);
         Note note2 = new Note(8,5,fraction);
 
             //        ArrayList<ArrayList<Object>> noteTest = note1.lesNotes();
@@ -39,9 +39,17 @@ public class Main {
 //        System.out.println();
 
         //ManipulerFichiers.lireFichier();
-        ArrayList liste = ManipulerFichiers.listeChar();
+
+
+
+//        ArrayList liste = ManipulerFichiers.listeChar();
+//        Note nouvelleNote = Note.manipulerLaNote(note1, liste);
+//        System.out.println(nouvelleNote.toString());
+
+        ArrayList<String> liste = ManipulerFichiers.listeChar();
         Note nouvelleNote = ManipulerChar.manipulerLaNote(note1, liste);
         System.out.println(nouvelleNote.toString());
+
 
     }
 }

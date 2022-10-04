@@ -3,78 +3,98 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class ManipulerChar {
-    public static HashMap listeCharEtEffets(Note nouvelleNote, ArrayList donnees){
-        //donnees = ManipulerFichiers.listeChar();
+    public static Note manipulerLaNote(Note noteTemp, ArrayList<String> donnees){
 
-        HashMap listeChar = new HashMap<String, Objects>();
-        //listeChar.put("1", new Fraction(3,1));
-        listeChar.put("1", nouvelleNote.setDuree(new Fraction(1,1)));
-        listeChar.put("2", nouvelleNote.setNumDeNote(2));
-
-        return listeChar;
-    }
-
-    public static Note manipulerLaNote(Note nouvelleNote, ArrayList donnees){
-        HashMap listeChar = listeCharEtEffets(nouvelleNote, donnees);
-        for (int i = 0; i < donnees.size(); i++) {
-            if (listeChar.containsKey(i)){
-               nouvelleNote = (Note) listeChar.get(i);
-                //System.out.println(nouvelleNote);
-                // nouvelleNote.setDuree(new Fraction(1,1));
-
-                //nouvelleNote.setDuree((Fraction) listeChar.get("1"));
-
+        for (String laDonnee : donnees){
+            switch (laDonnee){
+                case "1":
+                    noteTemp.setDuree(new Fraction(1,1));
+                    break;
+                case "*":
+                    noteTemp.setDuree(noteTemp.getDuree().multiplierFractions(new Fraction(2,1)));
+                    break;
+                case ".":
+                    noteTemp.setDuree(noteTemp.getDuree().multiplierFractions(new Fraction(3,2)));
+                    break;
+                case "/":
+                    noteTemp.setDuree(noteTemp.getDuree().diviserFractions(new Fraction(2,1)));
+                    break;
+                case "[":
+                    //sauvegarde la note courante sur la pile
+                    break;
+                case "]":
+                    //remplace ls note courante par la note au sommet de la pile
+                    break;
+                case "a":
+                    noteTemp.setNumDeNote(9);
+                    break;
+                case "b":
+                    noteTemp.setNumDeNote(11);
+                    break;
+                case "c":
+                    noteTemp.setNumDeNote(0);
+                    break;
+                case "d":
+                    noteTemp.setNumDeNote(2);
+                    break;
+                case "e":
+                    noteTemp.setNumDeNote(4);
+                    break;
+                case "f":
+                    noteTemp.setNumDeNote(5);
+                    break;
+                case "g":
+                    noteTemp.setNumDeNote(7);
+                    break;
+                case "2":
+                    noteTemp.setNumOctave(2);
+                    break;
+                case "3":
+                    noteTemp.setNumOctave(3);
+                    break;
+                case "4":
+                    noteTemp.setNumOctave(4);
+                    break;
+                case "5":
+                    noteTemp.setNumOctave(5);
+                    break;
+                case "6":
+                    noteTemp.setNumOctave(6);
+                    break;
+                case "7":
+                    noteTemp.setNumOctave(7);
+                    break;
+                case "8":
+                    noteTemp.setNumOctave(8);
+                    break;
+                case "9":
+                    noteTemp.setNumOctave(9);
+                    break;
+                case "&":
+                    if(noteTemp.getNumDeNote() == 0 && noteTemp.getNumOctave() == 2){
+                        noteTemp = noteTemp;
+                    } else if (noteTemp.getNumDeNote() == 0) {
+                        noteTemp.setNumDeNote(11);
+                        noteTemp.setNumOctave(noteTemp.getNumOctave()-1);
+                    }else{
+                        noteTemp.setNumDeNote(noteTemp.getNumDeNote()-1);
+                }
+                    break;
+                case "#":
+                    if(noteTemp.getNumDeNote() == 11 && noteTemp.getNumOctave() == 9){
+                        noteTemp = noteTemp;
+                    } else if (noteTemp.getNumDeNote() == 11) {
+                        noteTemp.setNumDeNote(0);
+                        noteTemp.setNumOctave(noteTemp.getNumOctave()+1);
+                    }else {
+                        noteTemp.setNumDeNote(noteTemp.getNumDeNote()+1);
+                    }
+                    break;
+                case "!":
+                    //indique qu il faut jouer la note courante
+                    break;
             }
         }
-        return nouvelleNote;
-    }
-
-
-    public static boolean validerChar(){
-          boolean charValide = false;
-//        ArrayList listeFichier = ManipulerFichiers.listeChar();
-//        ArrayList listeCharValides = ManipulerChar.charValides();
-//
-//        for (int i = 0; i < listeFichier.size(); i++) {
-//            for (int j = 0; j < listeCharValides.size(); j++) {
-//
-//            }
-//
-//        }
-
-
-
-
-       return charValide;
+        return noteTemp;
     }
 }
-
-
-//        ArrayList<String> listeCharValide = new ArrayList<String >();
-//        listeCharValide.add("1");
-//        listeCharValide.add("*");
-//        listeCharValide.add(".");
-//        listeCharValide.add("/");
-//        listeCharValide.add("[");
-//        listeCharValide.add("]");
-//        listeCharValide.add("a");
-//        listeCharValide.add("b");
-//        listeCharValide.add("c");
-//        listeCharValide.add("d");
-//        listeCharValide.add("e");
-//        listeCharValide.add("f");
-//        listeCharValide.add("g");
-//        listeCharValide.add("2");
-//        listeCharValide.add("3");
-//        listeCharValide.add("4");
-//        listeCharValide.add("5");
-//        listeCharValide.add("6");
-//        listeCharValide.add("7");
-//        listeCharValide.add("8");
-//        listeCharValide.add("9");
-//        listeCharValide.add("&");
-//        listeCharValide.add("#");
-//        listeCharValide.add("!");
-//        System.out.println(listeCharValide);
-
-//return listeCharValide;
