@@ -44,7 +44,7 @@ public class ManipulerFichiers {
         return liste;
     }
 
-    public static void ecrireFichier(){
+    public static void ecrireFichier(ArrayList notesAJouer){
         String nomFichierSortie = demanderNomFichier();
         PrintStream sortie = null;
         try {

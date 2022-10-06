@@ -8,6 +8,10 @@ public class Fraction {
         simplifier();
     }
 
+    public Fraction(int numerateur){
+        this.numerateur = numerateur;
+    }
+
     public static int trouverPGCD(int num, int denum){
         int lePGCD = 0;
         int mod;
@@ -97,8 +101,13 @@ public class Fraction {
     }
 
     public String toString(){
-        String fractionRendue = this.numerateur + " / " + this.denominateur;
+        String fractionRendue = "";
 
+        if(this.denominateur == 1 ){
+            fractionRendue = this.numerateur + "";
+        }else {
+            fractionRendue = this.numerateur + "/" + this.denominateur;
+        }
         return fractionRendue;
     }
 }

@@ -1,10 +1,8 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
 
 public class ManipulerChar {
-    public static Note manipulerLaNote(Note noteTemp, ArrayList<String> donnees){
+    public static ArrayList manipulerLaNote(Note noteTemp, ArrayList<String> donnees){
         ArrayDeque<Note> notePile = new ArrayDeque<>();
         ArrayList<Note> notesAJouer = new ArrayList<>();
         Note derniereNotePile;
@@ -101,10 +99,80 @@ public class ManipulerChar {
                     break;
                 case "!":
                     //indique qu il faut jouer la note courante
-
+                    notesAJouer.add(new Note(noteTemp));
                     break;
             }
         }
-        return noteTemp;
+        return notesAJouer;
+    }
+
+    public static ArrayList<String> listeNotesAJouer(Note noteTemp, ArrayList<String> donnees){
+        ArrayList<Note> notesAJouer = manipulerLaNote(noteTemp, donnees);
+        ArrayList<String> listeNotesAJouer = new ArrayList<String>();
+        Fraction laDuree;
+        int leNumNote;
+        int leNumOctave;
+        String valeurDeLaNote = "";
+        boolean valeurDeLaNoteTrouvee;
+        boolean valeurPasDansTableau;
+        String noteBonFormat = "";
+
+        for (Note chaqueNote : notesAJouer){
+            noteBonFormat = "";
+            valeurDeLaNoteTrouvee = true;
+            valeurPasDansTableau = true;
+            laDuree = chaqueNote.getDuree();
+            leNumNote = chaqueNote.getNumDeNote();
+            leNumOctave = chaqueNote.getNumOctave();
+
+            do {
+                switch (leNumNote) {
+                    case 9:
+                        valeurDeLaNote = "A";
+                        valeurDeLaNoteTrouvee = true;
+                        break;
+                    case 11:
+                        valeurDeLaNote = "B";
+                        valeurDeLaNoteTrouvee = true;
+                        break;
+                    case 0:
+                        valeurDeLaNote = "C";
+                        valeurDeLaNoteTrouvee = true;
+                        break;
+                    case 2:
+                        valeurDeLaNote = "D";
+                        valeurDeLaNoteTrouvee = true;
+                        break;
+                    case 4:
+                        valeurDeLaNote = "E";
+                        valeurDeLaNoteTrouvee = true;
+                        break;
+                    case 5:
+                        valeurDeLaNote = "F";
+                        valeurDeLaNoteTrouvee = true;
+                        break;
+                    case 7:
+                        valeurDeLaNote = "G";
+                        valeurDeLaNoteTrouvee = true;
+                        break;
+                    default:
+                        valeurDeLaNoteTrouvee = false;
+                        valeurPasDansTableau = false;
+                        leNumNote = leNumNote -1;
+                }
+            }while (!valeurDeLaNoteTrouvee);
+
+            if (valeurPasDansTableau == false){
+                valeurDeLaNote = valeurDeLaNote + "#";
+            }
+
+            noteBonFormat = laDuree + " " + valeurDeLaNote + leNumOctave;
+            listeNotesAJouer.add(new String(noteBonFormat));
+        }
+
+        //notesAJouer.toString();
+
+
+        return listeNotesAJouer;
     }
 }
