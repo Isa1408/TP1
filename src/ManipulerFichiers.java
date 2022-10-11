@@ -7,12 +7,9 @@ import java.util.Scanner;
 public class ManipulerFichiers {
     public static String demanderNomFichier(){
         Scanner clavier = new Scanner(System.in);
-        //Scanner fichier = null; // pas oblige de l ecrire le null mais ici c obligatoire
-
-        System.out.print("entrez le nom du fichier: ");
+        System.out.print("Entrez le nom du fichier: ");
         String nomFichierEntrees = clavier.next();
 
-        //clavier.close(); //on ferme nos truc une fois a la fin
         return nomFichierEntrees;
     }
 
@@ -23,7 +20,7 @@ public class ManipulerFichiers {
         try {
             fichier = new Scanner(new File( nomFichierEntree));
         } catch (FileNotFoundException e) {
-            System.err.println("erreur");
+            System.err.println("Erreur");
             System.exit(-1);
         }
 
@@ -62,13 +59,11 @@ public class ManipulerFichiers {
 
         for (String chaque : notesAJouer){
             if(!chaque.equals("\n"))
-                affichage = affichage + chaque + " , ";
+                affichage = affichage + chaque + ", ";
             else
                 affichage = affichage + chaque + "";
         }
         affichage = affichage.replaceAll(", \n", "\n");
         return affichage.substring(0, affichage.lastIndexOf(","));
     }
-
-
 }

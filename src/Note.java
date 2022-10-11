@@ -1,7 +1,7 @@
 public class Note {
-    private int numDeNote = 9;
-    private int numOctave = 4;
-    private Fraction duree = new Fraction(1,1);
+    private int numDeNote;
+    private int numOctave;
+    private Fraction duree;
 
 
     public Note(int numDeNote, int numOctave, Fraction duree) {
