@@ -48,8 +48,12 @@ public class Main {
         ArrayList<String> liste = ManipulerFichiers.listeChar();
         ArrayList notesAJouer = ManipulerChar.listeNotesAJouer(new Note(9,4,
                 new Fraction(1,1)), liste);
+//        String notesAJouer = ManipulerChar.affichage(new Note(9,4,
+//                new Fraction(1,1)), liste);
+//
+        ManipulerFichiers.ecrireFichier(notesAJouer);
 
-        System.out.print(notesAJouer);
+        //System.out.print(notesAJouer);
        // System.out.println(notesAJouer.get(0));
 
 

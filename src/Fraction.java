@@ -8,9 +8,7 @@ public class Fraction {
         simplifier();
     }
 
-    public Fraction(int numerateur){
-        this.numerateur = numerateur;
-    }
+    public Fraction(int numerateur){this.numerateur = numerateur;}
 
     public static int trouverPGCD(int num, int denum){
         int lePGCD = 0;
@@ -36,12 +34,34 @@ public class Fraction {
         denominateur = denominateur / lePGCD;
 
     }
+
+    public Boolean estPlusGrand(Fraction autreFraction){
+        boolean fractionComparee = this.numerateur * autreFraction.denominateur
+                > this.denominateur * autreFraction.numerateur;
+        return fractionComparee;
+    }
+
+    public Boolean estEgal(Fraction autreFraction){
+        boolean fractionComparee = this.numerateur * autreFraction.denominateur
+                == this.denominateur * autreFraction.numerateur;
+        return fractionComparee;
+    }
+
     public Fraction additionnerFractions(Fraction autreFraction){
         Fraction fractionsAdditionnees;
         int numerateur = 0;
         int denominateur = 0;
 
-        numerateur = this.numerateur * autreFraction.getDenominateur() + autreFraction.getNumerateur() * this.denominateur;
+//        if(this.denominateur == 1 && autreFraction.denominateur == 1){
+//            numerateur = this.numerateur + autreFraction.numerateur;
+//            fractionsAdditionnees = new Fraction(numerateur);
+//        }else if(this.denominateur == 1){
+//            numerateur = autreFraction.numerateur + this.numerateur
+//                    * autreFraction.denominateur;
+//        }
+
+        numerateur = this.numerateur * autreFraction.getDenominateur() +
+                autreFraction.getNumerateur() * this.denominateur;
         denominateur = this.denominateur * autreFraction.getDenominateur();
         fractionsAdditionnees = new Fraction(numerateur, denominateur);
 
@@ -53,7 +73,8 @@ public class Fraction {
         int numerateur = 0;
         int denominateur = 0;
 
-        numerateur = this.numerateur * autreFraction.getDenominateur() - autreFraction.getNumerateur() * this.denominateur;
+        numerateur = this.numerateur * autreFraction.getDenominateur() -
+                autreFraction.getNumerateur() * this.denominateur;
         denominateur = this.denominateur * autreFraction.getDenominateur();
         fractionsSoustraites = new Fraction(numerateur, denominateur);
 

@@ -32,6 +32,8 @@ public class ManipulerFichiers {
 
     public static ArrayList<String> listeChar(){
         Scanner fichier = lireFichier();
+//        int nbrTemps = TempsDemande.nbrTemps();
+//        TempsDemande temps = new TempsDemande(nbrTemps);
         String courant = "";
         fichier.useDelimiter("");
         ArrayList<String> liste = new ArrayList<String>();
@@ -53,8 +55,8 @@ public class ManipulerFichiers {
             e.printStackTrace();
         }
 
-       // sortie.print("D#, ");
-       // sortie.close();
+        sortie.print(notesAJouer);
+        sortie.close();
     }
 
 
