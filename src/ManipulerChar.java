@@ -112,7 +112,6 @@ public class ManipulerChar {
         Fraction leTempsDemande = new Fraction(nbrTemps,1);
         ArrayList<Note> notesAJouer = manipulerLaNote(noteTemp, donnees);
         ArrayList<String> listeNotesAJouer = new ArrayList<String>();
-        //ArrayList<Note> listeNotesAJouer = new ArrayList<>();
         Fraction laDuree;
         int leNumNote;
         int leNumOctave;
@@ -127,7 +126,6 @@ public class ManipulerChar {
         Fraction tmpRestant;
         Fraction tmpTransf = null;
         boolean dureeTransf = false;
-
 
         for (Note chaqueNote : notesAJouer){
             noteBonFormat = "";
@@ -180,15 +178,6 @@ public class ManipulerChar {
 
 
             if (temps != null){
-//                if(dureeTransf){
-//                    temps = temps.additionnerFractions(tmpTransf);
-//                }
-//                if(tmpTransf != null){
-//                    temps = temps.additionnerFractions(tmpTransf);
-//                }
-//                if(!lesDurees.isEmpty()){
-//                    temps = temps.additionnerFractions(lesDurees.get(0));
-//                }
                 temps = temps.additionnerFractions(laDuree);
             }else {
                 temps = new Fraction(laDuree.getNumerateur(),
@@ -199,23 +188,25 @@ public class ManipulerChar {
                 temps = temps.additionnerFractions(tmpTransf);
             }
 
-            lesDurees.add(laDuree); //ajouter duree transferee
+            lesDurees.add(laDuree);
 
             if(temps.estPlusGrand(leTempsDemande)){
                 somme = lesDurees.get(0);
                 for(int i = 1; i < lesDurees.size()-1; i++){
                     somme = somme.additionnerFractions(lesDurees.get(i));
                 }
-//                if(tmpTransf != null){
-//                    temps = temps.additionnerFractions(tmpTransf);
-//                }
                 tmpRestant = leTempsDemande.soustraireFractions(somme);
                 tmpTransf = temps.soustraireFractions(leTempsDemande);
                 laDuree = tmpRestant;
-
             }
 
-            noteBonFormat = laDuree + " " + valeurDeLaNote + leNumOctave;
+            if(temps.estPlusGrand(leTempsDemande)){
+                noteBonFormat =
+                        laDuree + " " + valeurDeLaNote + leNumOctave + "-";
+            }else{
+                noteBonFormat = laDuree + " " + valeurDeLaNote + leNumOctave;
+            }
+
             listeNotesAJouer.add(new String(noteBonFormat));
             dureeTransf = false;
             if(temps.estPlusGrand(leTempsDemande) || temps.estEgal(leTempsDemande)){
@@ -224,34 +215,16 @@ public class ManipulerChar {
                     noteBonFormat = tmpTransf + " " + valeurDeLaNote + leNumOctave;
                     listeNotesAJouer.add(new String(noteBonFormat));
                 }
-                //tmpTransf = null;
 
                 lesDurees.clear();
                 if(temps.estPlusGrand(leTempsDemande)){
                     lesDurees.add(tmpTransf);
                     dureeTransf = true;
                 }
-                //tmpTransf = null; //pas le mettre a null
 
                 temps = null;
             }
         }
         return listeNotesAJouer;
     }
-
-    //mettre retour en String
-//    public static ArrayList affichage(Note noteTemp, ArrayList<String> donnees){
-//        ArrayList<String> listeNotesAJouer = listeNotesAJouer(noteTemp,donnees);
-//        String notesAAfficher = "";
-//        int nbrTemps = TempsDemande.nbrTemps();
-//        //TempsDemande temps = new TempsDemande(nbrTemps);
-//
-//        for (Note chaqueNote : listeNotesAJouer){
-//
-//        }
-//
-//
-//
-//        return listeNotesAJouer;
-//    }
 }

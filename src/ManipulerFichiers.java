@@ -32,8 +32,6 @@ public class ManipulerFichiers {
 
     public static ArrayList<String> listeChar(){
         Scanner fichier = lireFichier();
-//        int nbrTemps = TempsDemande.nbrTemps();
-//        TempsDemande temps = new TempsDemande(nbrTemps);
         String courant = "";
         fichier.useDelimiter("");
         ArrayList<String> liste = new ArrayList<String>();
@@ -42,23 +40,35 @@ public class ManipulerFichiers {
             if (!courant.equals("\n"))
                 liste.add(courant);
         }
-        //System.out.println(liste);
         return liste;
     }
 
-    public static void ecrireFichier(ArrayList notesAJouer){
+    public static void ecrireFichier(ArrayList<String> notesAJouer){
         String nomFichierSortie = demanderNomFichier();
         PrintStream sortie = null;
+        String notesAffichage;
         try {
             sortie = new PrintStream( new File(nomFichierSortie));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        sortie.print(notesAJouer);
+        notesAffichage = toString(notesAJouer);
+        sortie.print(notesAffichage);
         sortie.close();
     }
 
+    public static String toString(ArrayList<String> notesAJouer){
+        String affichage = "";
+
+        for (String chaque : notesAJouer){
+            if(!chaque.equals("\n"))
+                affichage = affichage + chaque + " , ";
+            else
+                affichage = affichage + chaque + "";
+        }
+        affichage = affichage.replaceAll(", \n", "\n");
+        return affichage.substring(0, affichage.lastIndexOf(","));
+    }
 
 
 }

@@ -16,19 +16,6 @@ public class Note {
         this.duree = nouvelleNote.duree;
     }
 
-//    public Note(Fraction duree, int numDeNote, int numOctave) {
-//        this.duree = duree;
-//        this.numDeNote = numDeNote;
-//        this.numOctave = numOctave;
-//    }
-
-    //    public void NoteAJouer(int numDeNote, int numOctave, Fraction duree){
-//        if (duree.getDenominateur() == 1){
-//            duree = new Fraction(duree.getNumerateur());
-//        }
-//
-//    }
-
     public int getNumDeNote() {
         return numDeNote;
     }

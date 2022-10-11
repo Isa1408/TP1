@@ -52,14 +52,6 @@ public class Fraction {
         int numerateur = 0;
         int denominateur = 0;
 
-//        if(this.denominateur == 1 && autreFraction.denominateur == 1){
-//            numerateur = this.numerateur + autreFraction.numerateur;
-//            fractionsAdditionnees = new Fraction(numerateur);
-//        }else if(this.denominateur == 1){
-//            numerateur = autreFraction.numerateur + this.numerateur
-//                    * autreFraction.denominateur;
-//        }
-
         numerateur = this.numerateur * autreFraction.getDenominateur() +
                 autreFraction.getNumerateur() * this.denominateur;
         denominateur = this.denominateur * autreFraction.getDenominateur();
