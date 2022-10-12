@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class ManipulerChar {
     /**
-     * Méthode qui détermine les effets que chaque caractère peut avoir sur
+     * Détermine les effets que chaque caractère peut avoir sur
      * la note.
      * @param noteTemp la note de départ.
      * @param donnees la liste qui contient tous les caractères rédigés dans
@@ -119,7 +119,7 @@ public class ManipulerChar {
     }
 
     /**
-     * Méthode qui s'occupe de la façon que nous allons afficher les notes.
+     * Manipule la façon que nous allons afficher les notes.
      * @param noteTemp la note de départ.
      * @param donnees la liste qui contient tous les caractères rédigés dans
      *                le fichier.

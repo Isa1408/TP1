@@ -1,6 +1,14 @@
 import java.util.Scanner;
 
+/**
+ * Classe qui permet de demander le temps à l'utilisateur.
+ * @Author Isabelle Tamas
+ */
 public class TempsDemande {
+    /**
+     * Méthode qui demande à l'utilisateur le nombre de temps par ligne.
+     * @return le nombre de temps par ligne
+     */
     public static int nbrTemps(){
         int nbrTempsParLigne = 0;
         Scanner nbrTempsClavier = new Scanner(System.in);
@@ -23,7 +31,6 @@ public class TempsDemande {
                 pasUncChiffre = true;
             }
         }
-        //nbrTempsClavier.close();
         return nbrTempsParLigne;
     }
 }

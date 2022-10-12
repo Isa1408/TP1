@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class ManipulerFichiers {
 
     /**
-     * Méthode qui demande à l'utilisateur le nom des fichiers.
+     * Demande à l'utilisateur le nom des fichiers.
      * @return retourne le nom du fichier saisi.
      */
     public static String demanderNomFichier(){
@@ -25,7 +25,7 @@ public class ManipulerFichiers {
     }
 
     /**
-     * Méthode qui lit le fichier d'entrée.
+     * Lit le fichier d'entrée.
      * @return retourne le fichier demandé.
      */
     public static Scanner lireFichier(){
@@ -42,7 +42,7 @@ public class ManipulerFichiers {
     }
 
     /**
-     * Méthode qui parcoure le fichier et place chaque caractères dans un
+     * Parcoure le fichier et place chaque caractères dans un
      * <code>Arraylist</code>
      * @return retourne un <code>Arraylist</code> de type <code>String</code>
      */
@@ -61,7 +61,7 @@ public class ManipulerFichiers {
 
 
     /**
-     * Méthode qui écrit dans un nouveau fichier saisi par l'utilisateur.
+     * Écrit dans un nouveau fichier saisi par l'utilisateur.
      * @param notesAJouer une liste de notes à imprimer.
      */
     public static void ecrireFichier(ArrayList<String> notesAJouer){
@@ -79,7 +79,7 @@ public class ManipulerFichiers {
     }
 
     /**
-     * Méthode qui affiche la liste de notes à imprimer dans un bon format.
+     * Affiche la liste de notes à imprimer dans un bon format.
      * @param notesAJouer liste de notes à imprimer.
      * @return le <code>Strinf</code> qu'il doit afficher.
      */
