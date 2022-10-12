@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * @Author Isabelle Tamas
+ * Code permanent: TAMI76580208
+ * Présenté à: Bruno Malenfant
+ * Date: 13 octobre 2022
+ */
 public class Principal {
     public static void main(String[] args) {
 

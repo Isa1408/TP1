@@ -1,7 +1,19 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 
+/**
+ * Représente la classe qui va manipuler tous les caractères dans le fichier.
+ * @Author Isabelle Tamas
+ */
 public class ManipulerChar {
+    /**
+     * Méthode qui détermine les effets que chaque caractère peut avoir sur
+     * la note.
+     * @param noteTemp la note de départ.
+     * @param donnees la liste qui contient tous les caractères rédigés dans
+     *                le fichier
+     * @return une liste des notes à jouer.
+     */
     public static ArrayList manipulerLaNote(Note noteTemp, ArrayList<String> donnees){
         ArrayDeque<Note> notePile = new ArrayDeque<>();
         ArrayList<Note> notesAJouer = new ArrayList<>();
@@ -85,7 +97,7 @@ public class ManipulerChar {
                         noteTemp.setNumOctave(noteTemp.getNumOctave()-1);
                     }else{
                         noteTemp.setNumDeNote(noteTemp.getNumDeNote()-1);
-                }
+                    }
                     break;
                 case "#":
                     if(noteTemp.getNumDeNote() == 11 && noteTemp.getNumOctave() == 9){
@@ -106,8 +118,15 @@ public class ManipulerChar {
         return notesAJouer;
     }
 
+    /**
+     * Méthode qui s'occupe de la façon que nous allons afficher les notes.
+     * @param noteTemp la note de départ.
+     * @param donnees la liste qui contient tous les caractères rédigés dans
+     *                le fichier.
+     * @return une liste des notes à jouer dans le bon format.
+     */
     public static ArrayList<String> listeNotesAJouer(Note noteTemp,
-                                                ArrayList<String> donnees){
+                                                     ArrayList<String> donnees){
         int nbrTemps = TempsDemande.nbrTemps();
         Fraction leTempsDemande = new Fraction(nbrTemps,1);
         ArrayList<Note> notesAJouer = manipulerLaNote(noteTemp, donnees);
@@ -198,12 +217,9 @@ public class ManipulerChar {
                 tmpRestant = leTempsDemande.soustraireFractions(somme);
                 tmpTransf = temps.soustraireFractions(leTempsDemande);
                 laDuree = tmpRestant;
-            }
-
-            if(temps.estPlusGrand(leTempsDemande)){
                 noteBonFormat =
                         laDuree + " " + valeurDeLaNote + leNumOctave + "-";
-            }else{
+            }else {
                 noteBonFormat = laDuree + " " + valeurDeLaNote + leNumOctave;
             }
 
